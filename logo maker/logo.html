@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<style>
+#container {
+  width: 405px;
+  height: 405px;
+  position: relative;
+  background: black;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: blue;
+}
+#animate2 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: green;
+}
+#animate3 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: yellow;
+}
+button{
+background-color:yellow;
+}
+  div {
+    width: 970px;
+    height: 600px;
+    border: 3px solid black;
+}
+myimage {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background-color: green;
+}
+a{
+color: black;
+font-size:20px
+}
+</style>
+<body dir="rtl">
+<button onclick="start()"> <marquee>start</marquee></button>
+<table border="70" width="100%">
+<center>
+<td>
+<center>
+<div>
+<p id="demo2"></p>
+<center>
+<p id="demo"></p>
+<center>
+<img id="myImage" src="white.jpg">
+</div>
+</center>
+<center>
+</td>
+<td>
+<p>
+<a>בחר תמונה ללוגו:<a/>
+<button onclick="mypicture()">הבא</button>
+<br>
+<a>בחר צבע גופן:<a/>
+<button onclick="myMove()">כחול</button>
+<button onclick="myMove2()">ירוק</button>
+<button onclick="myMove3()">צהוב</button>
+</p> 
+<div id ="container">
+<center>
+<p id="p2">הצבע שבחרת:</p>
+</center>
+<br>
+<div id ="animate">כחול</div>
+<div id ="animate2">ירוק</div>
+<div id ="animate3">צהוב</div>
+</div>
+הגדל גופן:
+ <button onclick="size()">*2</button>
+  <button onclick="size2()">*4</button>
+  שקיפות תמונה:
+  <button onclick="Clear()">minus</button>
+<button onclick="noClear()">plus</button>
+<br>
+אפקט תמונה:
+  <button onclick="black()">שחור לבן</button>
+<button onclick="org()">רגיל</button>
+</td>
+<script>
+var i=0;
+function mypicture()
+{
+i++;
+var animals = ["white","circle", "triangle", "Square","red","green","brown","black","abc"];
+
+ document.getElementById('myImage').src=animals[i] + ".jpg";
+document.getElementById("demo2").src = animals[i];
+if(i==8){
+i=-1;
+}
+ }
+function start() {
+    var txt;
+    var person = prompt("Please enter your logo name:", "logo");
+    if (person == null || person == "") {
+        txt = "User cancelled the prompt.";
+    } else {
+        txt =  person;
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+function size() {
+document.getElementById('demo').style.fontSize="50px";
+}
+function size2() {
+document.getElementById('demo').style.fontSize="75px";
+}
+var x=1;
+function Clear()
+{
+x=x-0.1;
+document.getElementById('myImage').style.opacity = x;
+ }
+function noClear()
+{
+x=x+0.1;
+document.getElementById('myImage').style.opacity = x;
+ }
+ var y=0,z=0;
+function black()
+{
+document.getElementById("myImage").style.filter = "grayscale(100%)";
+ }
+function org()
+{
+document.getElementById("myImage").style.filter = "grayscale(0%)";
+ }
+function myMove() {
+document.getElementById("p2").style.color = "blue";
+document.getElementById("demo").style.color = "blue";
+document.getElementById('demo').style.fontSize="25px";
+  var elem = document.getElementById("animate");   
+  var pos = 0;
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.top = pos + 'px'; 
+      elem.style.right = pos + 'px'; 
+    }
+  }
+}
+function myMove2() {
+document.getElementById("p2").style.color = "green";
+document.getElementById("demo").style.color = "green";
+document.getElementById('demo').style.fontSize="25px";
+  var elem = document.getElementById("animate2");   
+  var pos = 0;
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.top = pos + 'px'; 
+    }
+  }
+}
+function myMove3() {
+document.getElementById("p2").style.color = "yellow";
+document.getElementById("demo").style.color = "yellow";
+document.getElementById('demo').style.fontSize="25px";
+  var elem = document.getElementById("animate3");   
+  var pos = 0;
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+     elem.style.right = pos + 'px';
+    }
+  }
+}
+</script>
+
+</body>
+</html>
